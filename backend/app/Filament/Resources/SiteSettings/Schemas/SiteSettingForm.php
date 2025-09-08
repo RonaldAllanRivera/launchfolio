@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\SiteSettings\Schemas;
 
 use Filament\Schemas\Schema;
-use Filament\Forms\Components\Grid;
-use Filament\Forms\Components\Section;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
@@ -45,16 +45,6 @@ class SiteSettingForm
                         Grid::make(2)->schema([
                             FileUpload::make('logo_path')->image()->directory('site')->disk('public'),
                             FileUpload::make('favicon_path')->image()->directory('site')->disk('public'),
-                        ]),
-                    ]),
-
-                Section::make('Social Links')
-                    ->schema([
-                        Grid::make(2)->schema([
-                            TextInput::make('facebook_url')->url()->label('Facebook URL'),
-                            TextInput::make('twitter_url')->url()->label('X/Twitter URL'),
-                            TextInput::make('linkedin_url')->url()->label('LinkedIn URL'),
-                            TextInput::make('github_url')->url()->label('GitHub URL'),
                         ]),
                     ]),
 

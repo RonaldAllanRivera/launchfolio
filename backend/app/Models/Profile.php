@@ -14,6 +14,7 @@ class Profile extends Model
     protected $fillable = [
         'user_id',
         'first_name',
+        'middle_initial',
         'last_name',
         'headline',
         'summary',
@@ -21,6 +22,7 @@ class Profile extends Model
         'banner_path',
         'location_city',
         'location_country',
+        'state_province',
         'industry',
         'website_url',
         'linkedin_url',
@@ -54,6 +56,13 @@ class Profile extends Model
 
     public function getFullNameAttribute(): string
     {
+        $mi = trim((string) ($this->middle_initial ?? ''));
+        // Format as "First M. Last" if middle initial provided (adds a dot if missing)
+        if ($mi !== '') {
+            $mi = rtrim($mi, '.');
+            $mi .= '.';
+            return trim(($this->first_name ?: '') . ' ' . $mi . ' ' . ($this->last_name ?: ''));
+        }
         return trim(($this->first_name ?: '') . ' ' . ($this->last_name ?: ''));
     }
 }

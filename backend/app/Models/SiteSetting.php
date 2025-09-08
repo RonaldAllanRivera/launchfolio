@@ -17,10 +17,6 @@ class SiteSetting extends Model
         'hero_image',
         'logo_path',
         'favicon_path',
-        'facebook_url',
-        'twitter_url',
-        'linkedin_url',
-        'github_url',
         'about',
     ];
 }
