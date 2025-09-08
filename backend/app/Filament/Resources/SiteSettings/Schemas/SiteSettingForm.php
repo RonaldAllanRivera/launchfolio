@@ -6,9 +6,7 @@ use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\RichEditor;
 
 class SiteSettingForm
 {
@@ -16,15 +14,12 @@ class SiteSettingForm
     {
         return $schema
             ->components([
-                Section::make('Branding & Contact')
+                Section::make('Branding')
                     ->schema([
                         Grid::make(2)->schema([
                             TextInput::make('site_name')->label('Site Name'),
                             TextInput::make('tagline')->label('Tagline'),
-                            TextInput::make('email')->email(),
-                            TextInput::make('phone'),
                         ]),
-                        Textarea::make('address')->rows(2),
                     ]),
 
                 Section::make('Hero')
@@ -48,9 +43,18 @@ class SiteSettingForm
                         ]),
                     ]),
 
-                Section::make('About')
+                Section::make('Domains')
                     ->schema([
-                        RichEditor::make('about')->columnSpanFull(),
+                        Grid::make(2)->schema([
+                            TextInput::make('primary_domain')
+                                ->label('Primary Domain')
+                                ->placeholder('app.yourdomain.com')
+                                ->helperText('Default domain used for public URLs.'),
+                            TextInput::make('custom_domain')
+                                ->label('Custom Domain (optional)')
+                                ->placeholder('yourbrand.com')
+                                ->helperText('For SaaS: map a verified custom domain when available.'),
+                        ]),
                     ]),
             ]);
     }

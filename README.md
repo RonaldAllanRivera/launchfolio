@@ -69,7 +69,9 @@ Notes:
 - Experiences: roles, companies, locations, start/end, ordering
 - Projects: title, slug, image uploads, category, external URL, publish state, ordering
 - Certifications: PDF/image uploads, issuer, date, publish state
-- Site settings: branding, contact links, SEO basics
+- Site settings: branding, domains, SEO basics
+  - New: `primary_domain` and `custom_domain` for future SaaS domain mapping
+  - Email, Phone, Address, About now live under Profiles only (de-duplicated)
 - Admin: Filament v4 with modern UX
 - Public API: read-only endpoints for frontend (see API)
 

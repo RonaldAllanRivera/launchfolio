@@ -9,14 +9,12 @@ class SiteSetting extends Model
     protected $fillable = [
         'site_name',
         'tagline',
-        'email',
-        'phone',
-        'address',
         'hero_title',
         'hero_subtitle',
         'hero_image',
         'logo_path',
         'favicon_path',
-        'about',
+        'primary_domain',
+        'custom_domain',
     ];
 }

@@ -15,8 +15,8 @@ class SiteSettingsTable
         return $table
             ->columns([
                 TextColumn::make('site_name')->label('Site Name')->searchable()->sortable(),
-                TextColumn::make('email')->sortable()->toggleable(),
-                TextColumn::make('phone')->toggleable(),
+                TextColumn::make('primary_domain')->label('Primary Domain')->sortable()->toggleable(),
+                TextColumn::make('custom_domain')->label('Custom Domain')->toggleable(),
             ])
             ->filters([
                 //

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.4] - 2025-09-08
+
+- Site Settings: remove duplicated profile fields from UI and model (`email`, `phone`, `address`, `about`)
+- Migration: `2025_09_08_202900_update_site_settings_drop_contact_add_domains.php` drops duplicate columns; adds `primary_domain`, `custom_domain`
+- Site Settings UI: add "Domains" section with `primary_domain` and `custom_domain`
+- Tables: update columns to display domains (remove email/phone)
+
 ## [0.2.3] - 2025-09-08
 
 - Profiles: Add Middle Name (stored as `middle_initial`) and `state_province` fields
