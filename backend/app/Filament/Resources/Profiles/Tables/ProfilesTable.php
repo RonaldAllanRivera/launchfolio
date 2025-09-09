@@ -16,11 +16,13 @@ class ProfilesTable
     {
         return $table
             ->columns([
-                ImageColumn::make('photo_path')->label('Photo')->circular()->toggleable(),
+                ImageColumn::make('photo_path')
+                    ->label('Photo')
+                    ->disk('public')
+                    ->circular()
+                    ->toggleable(),
                 TextColumn::make('full_name')->label('Name')->searchable()->sortable(),
                 TextColumn::make('headline')->sortable()->toggleable(),
-                TextColumn::make('handle')->sortable()->toggleable(),
-                ToggleColumn::make('is_public')->label('Public')->sortable(),
             ])
             ->filters([
                 //

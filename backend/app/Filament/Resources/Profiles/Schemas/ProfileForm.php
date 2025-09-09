@@ -32,10 +32,6 @@ class ProfileForm
                             TextInput::make('middle_initial')->label('Middle Name')->maxLength(100)->columnSpan(12),
                             TextInput::make('last_name')->label('Last Name')->maxLength(100)->columnSpan(12),
                         ]),
-                        Grid::make(12)->schema([
-                            TextInput::make('handle')->label('Handle')->maxLength(100)->helperText('Public handle for future portfolio URLs')->unique(ignoreRecord: true)->columnSpan(8),
-                            Toggle::make('is_public')->label('Public')->default(true)->columnSpan(4),
-                        ]),
                     ]),
                     
                 Section::make('Location & Links')
@@ -120,9 +116,8 @@ class ProfileForm
 
                 Section::make('Media')
                     ->schema([
-                        Grid::make(2)->schema([
+                        Grid::make(1)->schema([
                             FileUpload::make('photo_path')->label('Photo')->image()->directory('profiles')->disk('public')->imageEditor(),
-                            FileUpload::make('banner_path')->label('Banner')->image()->directory('profiles')->disk('public')->imageEditor(),
                         ]),
                     ]),
 

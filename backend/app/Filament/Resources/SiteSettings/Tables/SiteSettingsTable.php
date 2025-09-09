@@ -14,7 +14,7 @@ class SiteSettingsTable
     {
         return $table
             ->columns([
-                TextColumn::make('site_name')->label('Site Name')->searchable()->sortable(),
+                TextColumn::make('seo_title')->label('SEO Title')->searchable()->sortable(),
                 TextColumn::make('primary_domain')->label('Primary Domain')->sortable()->toggleable(),
                 TextColumn::make('custom_domain')->label('Custom Domain')->toggleable(),
             ])

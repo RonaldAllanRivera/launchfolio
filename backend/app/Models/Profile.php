@@ -19,7 +19,6 @@ class Profile extends Model
         'headline',
         'summary',
         'photo_path',
-        'banner_path',
         'location_city',
         'location_country',
         'state_province',
@@ -30,8 +29,6 @@ class Profile extends Model
         'twitter_url',
         'contact_email',
         'phone',
-        'handle',
-        'is_public',
     ];
 
     public function user(): BelongsTo

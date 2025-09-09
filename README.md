@@ -66,12 +66,16 @@ Notes:
 - Profiles: avatar, socials, bio
   - Country/State selects with hybrid datasets and validation
   - Middle Name support; formatted full name in model accessor
+  - Banner image removed (keep a single, consistent profile photo)
 - Experiences: roles, companies, locations, start/end, ordering
 - Projects: title, slug, image uploads, category, external URL, publish state, ordering
 - Certifications: PDF/image uploads, issuer, date, publish state
-- Site settings: branding, domains, SEO basics
-  - New: `primary_domain` and `custom_domain` for future SaaS domain mapping
-  - Email, Phone, Address, About now live under Profiles only (de-duplicated)
+- Site settings: SEO, domains, publishing, assets
+  - SEO: `seo_title`, `seo_description`, `seo_keywords`
+  - Domains: `primary_domain`, `custom_domain`
+  - Publishing (site-wide): `handle`, `is_public`
+  - Slider Images: multi-upload with reordering (max 5; smaller previews)
+  - Email, Phone, Address, About live under Profiles only (de-duplicated)
 - Admin: Filament v4 with modern UX
 - Public API: read-only endpoints for frontend (see API)
 
@@ -95,6 +99,10 @@ From `backend/`:
 cp .env.example .env
 ```
 Set DB creds; set `APP_URL=http://127.0.0.1:8000`
+
+Photos and files
+- Public files are stored on the `public` disk (e.g., `storage/app/public`) and served via `/storage/*` URLs.
+- If images don’t render in the admin list/table, ensure the storage symlink exists: `php artisan storage:link`.
 
 2) Install deps
 ```

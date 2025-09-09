@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.5] - 2025-09-09
+
+- Site Settings: introduce SEO fields replacing branding
+  - New fields: `seo_title`, `seo_description`, `seo_keywords`
+  - Migration: `2025_09_09_093600_add_seo_fields_to_site_settings_table.php`
+- Site Settings: move publishing controls here
+  - New fields: `handle` (site-wide), `is_public` (site-wide)
+  - Migration: `2025_09_09_101300_move_handle_is_public_to_site_settings.php`
+  - Profiles form/table/model cleaned of `handle` and `is_public`
+- Site Settings: slider images for homepage hero/slider
+  - Field: `slider_images` (JSON), multi-upload, reorderable, preview smaller, limited to 5
+  - Migration: `2025_09_08_203500_add_slider_images_to_site_settings_table.php`
+- Profiles: remove banner image
+  - UI removed, model fillable updated
+  - Migration: `2025_09_09_103500_drop_banner_path_from_profiles_table.php`
+- Cleanup: remove legacy branding columns
+  - Dropped `site_name`, `tagline` via `2025_09_09_095900_drop_site_name_tagline_from_site_settings.php`
+- Fix: ensure profile photos render in list by setting ImageColumn disk('public')
+
 ## [0.2.4] - 2025-09-08
 
 - Site Settings: remove duplicated profile fields from UI and model (`email`, `phone`, `address`, `about`)

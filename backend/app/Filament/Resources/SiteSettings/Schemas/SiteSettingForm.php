@@ -6,6 +6,7 @@ use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 
 class SiteSettingForm
@@ -14,12 +15,21 @@ class SiteSettingForm
     {
         return $schema
             ->components([
-                Section::make('Branding')
+                Section::make('SEO')
                     ->schema([
                         Grid::make(2)->schema([
-                            TextInput::make('site_name')->label('Site Name'),
-                            TextInput::make('tagline')->label('Tagline'),
+                            TextInput::make('seo_title')
+                                ->label('SEO Title')
+                                ->maxLength(60),
+                            TextInput::make('seo_keywords')
+                                ->label('SEO Keywords')
+                                ->helperText('Comma-separated keywords')
+                                ->maxLength(255),
                         ]),
+                        Textarea::make('seo_description')
+                            ->label('SEO Description')
+                            ->rows(3)
+                            ->maxLength(160),
                     ]),
 
                 Section::make('Hero')
@@ -43,6 +53,21 @@ class SiteSettingForm
                         ]),
                     ]),
 
+                Section::make('Slider')
+                    ->schema([
+                        FileUpload::make('slider_images')
+                            ->label('Slider Images')
+                            ->image()
+                            ->multiple()
+                            ->maxFiles(5)
+                            ->imagePreviewHeight('110px')
+                            ->enableReordering()
+                            ->directory('site/sliders')
+                            ->disk('public')
+                            ->imageEditor()
+                            ->helperText('Upload multiple images. Drag to reorder.'),
+                    ]),
+
                 Section::make('Domains')
                     ->schema([
                         Grid::make(2)->schema([
@@ -54,6 +79,19 @@ class SiteSettingForm
                                 ->label('Custom Domain (optional)')
                                 ->placeholder('yourbrand.com')
                                 ->helperText('For SaaS: map a verified custom domain when available.'),
+                        ]),
+                    ]),
+
+                Section::make('Publishing')
+                    ->schema([
+                        Grid::make(2)->schema([
+                            TextInput::make('handle')
+                                ->label('Handle')
+                                ->maxLength(100)
+                                ->helperText('Public handle for portfolio URLs (site-wide).'),
+                            \Filament\Forms\Components\Toggle::make('is_public')
+                                ->label('Public')
+                                ->default(true),
                         ]),
                     ]),
             ]);
